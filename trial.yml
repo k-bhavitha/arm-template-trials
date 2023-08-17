@@ -3,20 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-# variables:
-#  subscriptionId: '29c1ad9f-091e-48a2-9184-01a489833f34'
-#  resourceGroupName: 'cpg-dnd'
-#  location: 'Central US'
-#  adminUsername: 'ValarVM'
-#  authenticationType: 'password'
-#  adminPasswordOrKey: 'SnowUser@2022!Galaxy'
-#  vmName: 'valarvm002-vm'
-#  networkSecurityGroupName: 'valarvm002-group'
-#  subnetName: 'valarsubnet001'
-#  virtualNetworkName: 'valar-vm'
-
 trigger:
-- main
+- secretvars
 
 pool:
   vmImage: ubuntu-latest
@@ -31,7 +19,7 @@ steps:
     resourceGroupName: $(resourceGroupName)
     location: $(location)
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/k-bhavitha/azure-arm/main/CreateWebApp/trial.json'
+    csmFileLink: 'https://raw.githubusercontent.com/k-bhavitha/arm-template-trials/secretvars/CreateWebApp/secretvars.json'
     deploymentMode: 'Incremental'
     deploymentName: 'DevopsVM'
     overrideParameters: '-adminUsername $(adminUsername) -authenticationType $(authenticationType) -adminPasswordOrKey $(adminPasswordOrKey) -vmName $(vmName) -deploymentID $(deploymentID) -networkSecurityGroupName $(networkSecurityGroupName) -subnetName $(subnetName)'
